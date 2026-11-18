@@ -1,0 +1,50 @@
+/* Inject Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import a modern, clean font (Inter) similar to the one in your UI design */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc; /* Very light slate background */
+}
+
+@layer utilities {
+  /* 
+    1. Grid Pattern: Creates the faint engineering graph-paper 
+    background seen in your landing page design 
+  */
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  }
+
+  /* 
+    2. Radial Gradients: Creates the soft purple/blue light 
+    blobs in the background corners 
+  */
+  .bg-gradient-radial {
+    background: 
+      radial-gradient(circle at top left, rgba(224, 231, 255, 0.7), transparent 40%),
+      radial-gradient(circle at bottom right, rgba(238, 242, 255, 0.5), transparent 40%);
+  }
+
+  /* 
+    3. Glass Card: A modern glassmorphism effect for your floating UI elements
+    (like the bounding box preview in your graphic)
+  */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+  }
+}

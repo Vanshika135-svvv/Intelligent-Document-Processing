@@ -1,0 +1,9 @@
+(
+echo node_modules/
+echo __pycache__/
+echo .vscode/
+echo *.safetensors
+echo *.bin
+echo *.pt
+echo *.pth
+) > .gitignore
