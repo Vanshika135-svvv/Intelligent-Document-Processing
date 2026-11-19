@@ -1,329 +1,159 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
-function Signup({ onNavigate }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+export default function Signup({ onAuthSuccess }) {
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
 
-    if (!name || !email || !password || !confirmPassword) {
-      alert("Please fill in all fields.");
+    if (!fullName.trim() || !email.trim() || !password.trim()) {
+      setError('Please fill in your full name, email address, and password.');
       return;
     }
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match.");
-      return;
+    setLoading(true);
+    try {
+      const res = await axios.post(
+        'http://localhost:5000/api/auth/signup',
+        { fullName: fullName.trim(), email: email.trim(), password },
+        { timeout: 4000 }
+      );
+      if (res.data?.token) {
+        localStorage.setItem('token', res.data.token);
+      }
+      if (onAuthSuccess) {
+        onAuthSuccess(res.data?.user || { fullName: fullName.trim(), email: email.trim() });
+      }
+      navigate('/dashboard');
+    } catch (err) {
+      // Fallback for offline/local demo flow if backend isn't running
+      if (!err.response) {
+        if (onAuthSuccess) {
+          onAuthSuccess({ fullName: fullName.trim(), email: email.trim() });
+        }
+        navigate('/dashboard');
+      } else {
+        setError(err.response?.data?.message || 'Could not create account. Please try again.');
+      }
+    } finally {
+      setLoading(false);
     }
-
-    // Temporary frontend registration
-    localStorage.setItem(
-      "idpUser",
-      JSON.stringify({
-        name: name,
-        email: email,
-      })
-    );
-
-    alert("Account created successfully!");
-
-    // Go to Login
-    onNavigate("login");
   };
 
   return (
-    <div className="auth-page">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-center px-4 py-10">
+      <div className="w-full max-w-md bg-slate-900/95 border border-slate-800 rounded-2xl p-7 sm:p-8 shadow-2xl space-y-6">
+        {/* Header */}
+        <div className="text-center space-y-1.5">
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            Create an account
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-400">
+            Team Aegis AI — Document Intelligence
+          </p>
+        </div>
 
-      {/* Background */}
-      <div className="auth-bg-orb auth-orb-one"></div>
-      <div className="auth-bg-orb auth-orb-two"></div>
-      <div className="auth-grid"></div>
-
-      {/* ================= TOP BAR ================= */}
-
-      <div className="auth-topbar">
-
-        {/* IDP Logo */}
-        <button
-          type="button"
-          className="auth-brand"
-          onClick={() => onNavigate("home")}
-        >
-          <div className="auth-brand-logo">
-            ID
+        {/* Error Alert */}
+        {error && (
+          <div className="px-3.5 py-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-medium">
+            {error}
           </div>
+        )}
 
-          <div className="auth-brand-text">
-            <strong>IDP</strong>
-            <span>Document Intelligence</span>
-          </div>
-        </button>
-
-        {/* Back to Home */}
-        <button
-          type="button"
-          className="back-home-btn"
-          onClick={() => onNavigate("home")}
-        >
-          ← Back to Home
-        </button>
-
-      </div>
-
-
-      {/* ================= MAIN CONTENT ================= */}
-
-      <div className="auth-container signup-layout">
-
-        {/* ================= SIGNUP CARD ================= */}
-
-        <div className="auth-card signup-card">
-
-          <div className="auth-card-header">
-
-            <div className="auth-card-icon">
-              +
-            </div>
-
-            <h2>
-              Create your account
-            </h2>
-
-            <p>
-              Start exploring intelligent document processing.
-            </p>
-
-          </div>
-
-
-          {/* FORM */}
-
-          <form onSubmit={handleSignup}>
-
-            {/* NAME */}
-
-            <div className="form-group">
-
-              <label>
-                Full Name
-              </label>
-
-              <div className="input-wrapper">
-
-                <span className="input-icon">
-                  ◉
-                </span>
-
-                <input
-                  type="text"
-                  placeholder="Enter your full name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-
-              </div>
-
-            </div>
-
-
-            {/* EMAIL */}
-
-            <div className="form-group">
-
-              <label>
-                Email Address
-              </label>
-
-              <div className="input-wrapper">
-
-                <span className="input-icon">
-                  @
-                </span>
-
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-
-              </div>
-
-            </div>
-
-
-            {/* PASSWORD */}
-
-            <div className="form-group">
-
-              <label>
-                Password
-              </label>
-
-              <div className="input-wrapper">
-
-                <span className="input-icon">
-                  ●
-                </span>
-
-                <input
-                  type="password"
-                  placeholder="Create a password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-
-              </div>
-
-            </div>
-
-
-            {/* CONFIRM PASSWORD */}
-
-            <div className="form-group">
-
-              <label>
-                Confirm Password
-              </label>
-
-              <div className="input-wrapper">
-
-                <span className="input-icon">
-                  ●
-                </span>
-
-                <input
-                  type="password"
-                  placeholder="Confirm your password"
-                  value={confirmPassword}
-                  onChange={(e) =>
-                    setConfirmPassword(e.target.value)
-                  }
-                />
-
-              </div>
-
-            </div>
-
-
-            {/* TERMS */}
-
-            <label className="terms-row">
-
-              <input
-                type="checkbox"
-                required
-              />
-
-              <span>
-                I agree to the platform terms and conditions.
-              </span>
-
-            </label>
-
-
-            {/* CREATE ACCOUNT */}
-
-            <button
-              type="submit"
-              className="auth-submit-btn"
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4 text-xs sm:text-sm">
+          <div className="space-y-1.5">
+            <label
+              htmlFor="fullName"
+              className="block text-xs font-semibold text-slate-300"
             >
-              Create Account
-              <span>→</span>
-            </button>
-
-          </form>
-
-
-          {/* DIVIDER */}
-
-          <div className="auth-divider">
-            <span>Already have an account?</span>
+              Full Name
+            </label>
+            <input
+              id="fullName"
+              type="text"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              placeholder="Enter your full name"
+              autoComplete="name"
+              className="w-full bg-slate-950 text-white placeholder:text-slate-500 border border-slate-700/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-2.5 text-sm outline-none transition"
+            />
           </div>
 
+          <div className="space-y-1.5">
+            <label
+              htmlFor="email"
+              className="block text-xs font-semibold text-slate-300"
+            >
+              Email Address
+            </label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              autoComplete="email"
+              className="w-full bg-slate-950 text-white placeholder:text-slate-500 border border-slate-700/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-2.5 text-sm outline-none transition"
+            />
+          </div>
 
-          {/* SIGN IN */}
+          <div className="space-y-1.5">
+            <label
+              htmlFor="password"
+              className="block text-xs font-semibold text-slate-300"
+            >
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Create a password"
+              autoComplete="new-password"
+              className="w-full bg-slate-950 text-white placeholder:text-slate-500 border border-slate-700/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-2.5 text-sm outline-none transition"
+            />
+          </div>
 
           <button
-            type="button"
-            className="switch-auth-btn"
-            onClick={() => onNavigate("login")}
+            type="submit"
+            disabled={loading}
+            className="w-full mt-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-semibold text-sm py-3 rounded-xl shadow-md shadow-indigo-600/30 transition"
           >
-            Sign in instead
-            <span>→</span>
+            {loading ? 'Creating account...' : 'Sign Up'}
           </button>
+        </form>
 
-
-          <p className="auth-footer-note">
-            Your account will provide access to the IDP
-            document processing workspace.
-          </p>
-
-        </div>
-
-
-        {/* ================= RIGHT SIDE ================= */}
-
-        <div className="signup-info">
-
-          <div className="signup-info-badge">
-            ✦ IDP WORKSPACE
-          </div>
-
-          <h1>
-            One workspace.
-            <span>
-              Complete document intelligence.
-            </span>
-          </h1>
-
+        {/* Footer Links */}
+        <div className="pt-2 space-y-2.5 text-center text-xs text-slate-400">
           <p>
-            Build a structured understanding of your documents
-            using layout analysis, spatial OCR and intelligent
-            document querying.
+            Already have an account?{' '}
+            <Link
+              to="/login"
+              className="text-indigo-400 hover:text-indigo-300 font-semibold transition"
+            >
+              Log in instead
+            </Link>
           </p>
-
-
-          <div className="signup-feature-list">
-
-            <div>
-              <span>01</span>
-              <strong>Upload PDF Documents</strong>
-            </div>
-
-            <div>
-              <span>02</span>
-              <strong>Analyze Document Layout</strong>
-            </div>
-
-            <div>
-              <span>03</span>
-              <strong>Extract Structured Information</strong>
-            </div>
-
-            <div>
-              <span>04</span>
-              <strong>Query Your Documents</strong>
-            </div>
-
+          <div>
+            <Link
+              to="/"
+              className="text-slate-400 hover:text-slate-200 font-medium transition"
+            >
+              Back to Home
+            </Link>
           </div>
-
         </div>
-
       </div>
-
-
-      {/* ================= FOOTER ================= */}
-
-      <div className="auth-bottom">
-        © 2026 Aegis AI · Intelligent Document Processing
-      </div>
-
     </div>
   );
 }
-
-export default Signup;

@@ -1,9 +1,30 @@
-(
-echo node_modules/
-echo __pycache__/
-echo .vscode/
-echo *.safetensors
-echo *.bin
-echo *.pt
-echo *.pth
-) > .gitignore
+# Dependencies & builds
+node_modules/
+client/build/
+.dist/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Python & ML checkpoints / weights
+__pycache__/
+*.py[cod]
+*$py.class
+*.venv/
+venv/
+my_robust_layoutlmv3/
+checkpoint-*/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# Temporary runtime uploads
+server/uploads/*
+!server/uploads/.gitkeep
+
+# IDE
+.vscode/

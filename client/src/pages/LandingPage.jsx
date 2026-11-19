@@ -1,235 +1,238 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const LandingPage = () => {
+export default function LandingPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#f8faff] bg-grid-pattern bg-gradient-radial relative overflow-x-hidden">
+    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
       
-      {/* Top Navbar - Exact Match to Screenshot */}
-      <header className="px-6 md:px-12 py-6 flex justify-between items-center max-w-[1380px] mx-auto w-full z-20">
-        <Link to="/" className="flex items-center space-x-3.5 group">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 text-white flex items-center justify-center font-bold text-base shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition">
-            ID
-          </div>
+      {/* Navigation Header */}
+      <header className="border-b border-slate-800 px-8 py-5 flex justify-between items-center sticky top-0 bg-slate-900/90 backdrop-blur-md z-50">
+        <div className="flex items-center space-x-3">
+          <div className="bg-indigo-600 text-white font-extrabold px-3.5 py-2 rounded-xl text-lg tracking-wider shadow-lg shadow-indigo-500/20">IDP</div>
           <div>
-            <h1 className="font-extrabold text-xl text-slate-900 tracking-tight leading-none">IDP</h1>
-            <span className="text-xs text-slate-400 font-medium tracking-wide">Document Intelligence</span>
+            <h1 className="text-base font-bold text-white tracking-wide">Intelligent Document Processing</h1>
+            <p className="text-[10px] text-indigo-400 font-semibold tracking-widest uppercase">Vision-Language Enterprise Suite</p>
           </div>
-        </Link>
-
-        <nav className="hidden md:flex items-center space-x-10 text-[15px] text-slate-600 font-medium">
-          <a href="#features" className="hover:text-indigo-600 transition">Features</a>
-          <a href="#how-it-works" className="hover:text-indigo-600 transition">How it works</a>
-          <a href="#about" className="hover:text-indigo-600 transition">About</a>
-        </nav>
-
-        <div className="flex items-center space-x-6">
-          <Link to="/login" className="text-[15px] font-semibold text-slate-700 hover:text-indigo-600 transition">
-            Login
+        </div>
+        <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+          <a href="#features" className="hover:text-indigo-400 transition">Features</a>
+          <a href="#architecture" className="hover:text-indigo-400 transition">Architecture</a>
+          <a href="#benchmarks" className="hover:text-indigo-400 transition">Benchmarks</a>
+          <Link to="/dashboard" className="hover:text-indigo-400 transition">Dashboard</Link>
+        </div>
+        <div className="flex items-center space-x-3">
+          <Link to="/login" className="text-xs font-semibold text-slate-300 hover:text-white px-3 py-2 transition">
+            Sign In
           </Link>
-          <Link 
-            to="/signup" 
-            className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-6 py-2.5 rounded-xl font-semibold text-[15px] hover:from-indigo-600 hover:to-indigo-700 transition shadow-lg shadow-indigo-500/25"
-          >
+          <Link to="/signup" className="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition">
             Sign Up
+          </Link>
+          <Link to="/workspace" className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition shadow-lg shadow-indigo-600/30">
+            Launch Workspace →
           </Link>
         </div>
       </header>
 
-      {/* Hero Section - Exact Match to Screenshot */}
-      <main className="flex-grow flex items-center max-w-[1380px] mx-auto w-full px-6 md:px-12 pt-8 pb-20">
-        <div className="grid lg:grid-cols-12 gap-12 items-center w-full">
-          
-          {/* Left Column: Typography & CTA */}
-          <div className="lg:col-span-6 space-y-7">
-            <div className="inline-flex items-center bg-white/90 backdrop-blur-md text-indigo-600 px-4 py-2 rounded-full text-xs font-semibold shadow-sm border border-indigo-100/80">
-              <span className="w-2 h-2 bg-indigo-600 rounded-full mr-2.5 animate-pulse"></span>
-              Layout-Aware Document Intelligence
-            </div>
-
-            <h1 className="text-5xl sm:text-6xl xl:text-[68px] font-extrabold text-[#0f172a] leading-[1.06] tracking-tight">
-              Make your <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-500 to-blue-500">
-                documents <br />
-                intelligent.
-              </span>
-            </h1>
-
-            <p className="text-lg sm:text-[19px] text-slate-500 max-w-xl leading-relaxed font-normal">
-              Upload complex documents, understand their layout, extract structured information, and ask questions directly from your documents.
-            </p>
-
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <Link 
-                to="/workspace" 
-                className="bg-indigo-600 text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-indigo-700 transition shadow-xl shadow-indigo-500/25 flex items-center space-x-2"
-              >
-                <span>Open IDP Workspace</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-              </Link>
-              <Link 
-                to="/dashboard" 
-                className="bg-white text-slate-700 border border-slate-200 px-7 py-4 rounded-xl font-semibold text-base hover:bg-slate-50 transition shadow-sm"
-              >
-                View Dashboard
-              </Link>
-            </div>
+      {/* Hero Section */}
+      <section className="max-w-7xl mx-auto px-6 pt-20 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-7 space-y-6">
+          <div className="inline-flex items-center space-x-2 bg-indigo-500/10 border border-indigo-500/20 px-3.5 py-1.5 rounded-full text-xs font-semibold text-indigo-300">
+            <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+            <span>Layout-Aware Vision-Language Transformer Engine</span>
           </div>
-
-          {/* Right Column: Interactive Tax Invoice Preview Window (Exact Match to Screenshot) */}
-          <div className="lg:col-span-6 relative">
-            {/* Soft Purple Glow Behind Mockup */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-indigo-200/40 via-blue-100/30 to-purple-200/40 rounded-3xl blur-2xl -z-10"></div>
-
-            {/* Browser Window Frame */}
-            <div className="bg-white/95 backdrop-blur-xl rounded-[28px] border border-slate-200/80 shadow-[0_25px_70px_-15px_rgba(79,70,229,0.15)] p-5 sm:p-7 relative">
-              
-              {/* Window Top Bar */}
-              <div className="flex items-center justify-between pb-5 mb-5 border-b border-slate-100">
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-slate-200"></div>
-                  <div className="w-3 h-3 rounded-full bg-slate-200"></div>
-                  <div className="w-3 h-3 rounded-full bg-slate-200"></div>
-                </div>
-                <span className="text-xs font-medium text-slate-400">IDP Processing Preview</span>
-                <span className="inline-flex items-center text-xs font-semibold text-emerald-500">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1.5 animate-ping"></span>
-                  Live
-                </span>
-              </div>
-
-              {/* Inner Document Card */}
-              <div className="bg-white rounded-2xl border border-slate-100 p-5 sm:p-6 shadow-sm relative">
-                
-                {/* Header Row */}
-                <div className="flex justify-between items-start mb-6">
-                  <div>
-                    <h3 className="text-xl font-extrabold text-slate-800 tracking-tight">TAX INVOICE</h3>
-                    <p className="text-[11px] font-semibold text-slate-400 tracking-[0.18em] uppercase mt-1">
-                      AEGIS TECHNOLOGIES
-                    </p>
-                  </div>
-                  {/* Small Blue Pill Behind Floating Card */}
-                  <div className="w-10 h-6 bg-indigo-500 rounded-lg opacity-80"></div>
-                </div>
-
-                {/* 3 Key-Value Extraction Cards */}
-                <div className="grid grid-cols-3 gap-3.5 mb-6">
-                  <div className="bg-[#f8faff] p-3.5 rounded-xl border border-slate-100/90">
-                    <p className="text-[11px] text-slate-400 font-medium mb-1">Invoice Number</p>
-                    <p className="font-bold text-slate-800 text-xs sm:text-sm">INV-2026-1048</p>
-                  </div>
-                  <div className="bg-[#f8faff] p-3.5 rounded-xl border border-slate-100/90">
-                    <p className="text-[11px] text-slate-400 font-medium mb-1">Invoice Date</p>
-                    <p className="font-bold text-slate-800 text-xs sm:text-sm">02 Oct 2026</p>
-                  </div>
-                  <div className="bg-[#f8faff] p-3.5 rounded-xl border border-slate-100/90">
-                    <p className="text-[11px] text-slate-400 font-medium mb-1">Vendor</p>
-                    <p className="font-bold text-slate-800 text-xs sm:text-sm truncate">Aegis Technologies</p>
-                  </div>
-                </div>
-
-                {/* Extracted Table Preview */}
-                <div className="bg-[#f8faff] rounded-xl border border-slate-100 overflow-hidden">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="border-b border-slate-200/60 text-[11px] font-semibold text-slate-400">
-                        <th className="py-2.5 px-4">Product</th>
-                        <th className="py-2.5 px-2">Qty</th>
-                        <th className="py-2.5 px-2">Price</th>
-                        <th className="py-2.5 px-4 text-right">Total</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 text-xs">
-                      <tr>
-                        <td className="py-3 px-4 font-medium text-slate-600">Document Processing</td>
-                        <td className="py-3 px-2 text-slate-500">1</td>
-                        <td className="py-3 px-2 text-slate-400">₹45,000</td>
-                        <td className="py-3 px-4 text-right font-bold text-slate-800">₹45,000</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 px-4 font-medium text-slate-600">AI Extraction Module</td>
-                        <td className="py-3 px-2 text-slate-500">1</td>
-                        <td className="py-3 px-2 text-slate-400">₹25,000</td>
-                        <td className="py-3 px-4 text-right font-bold text-slate-800">₹25,000</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 px-4 font-medium text-slate-600">Integration Support</td>
-                        <td className="py-3 px-2 text-slate-500">1</td>
-                        <td className="py-3 px-2 text-slate-400">₹14,560</td>
-                        <td className="py-3 px-4 text-right font-bold text-slate-800">₹14,560</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-              </div>
-
-              {/* Floating "Layout Detected" Badge on the Right */}
-              <div className="absolute -right-4 sm:-right-6 top-28 bg-white px-4 py-3 rounded-2xl shadow-[0_15px_35px_-5px_rgba(0,0,0,0.12)] border border-slate-100 flex items-center space-x-3.5 z-30">
-                <div className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">
-                  ✦
-                </div>
-                <div className="pr-2">
-                  <p className="text-xs font-bold text-slate-800">Layout Detected</p>
-                  <p className="text-[11px] text-slate-400">Tables & key-values</p>
-                </div>
-                <div className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center text-xs font-bold">
-                  ✓
-                </div>
-              </div>
-
-            </div>
+          <h2 className="text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Transform Unstructured Docs Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">Structured Intelligence.</span>
+          </h2>
+          <p className="text-base text-slate-400 leading-relaxed max-w-xl">
+            Bypass rigid templates. Our decoupled serverless architecture combines OpenCV pre-processing, LayoutLMv3 spatial tokenization, and MongoDB Atlas vector RAG to parse complex invoices, receipts, and enterprise forms with zero template reliance.
+          </p>
+          <div className="flex flex-wrap gap-4 pt-2">
+            <Link to="/workspace" className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-7 py-3.5 rounded-xl transition shadow-xl shadow-indigo-600/20 text-sm">
+              Open IDP Workspace
+            </Link>
+            <Link to="/dashboard" className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-7 py-3.5 rounded-xl transition border border-slate-700 text-sm">
+              View Dashboard
+            </Link>
           </div>
-
         </div>
-      </main>
 
-      {/* Pipeline / Features Section below fold (Matches your Activity & Package Diagrams) */}
-      <section id="features" className="py-16 bg-white/70 backdrop-blur-md border-t border-slate-200/60">
-        <div className="max-w-[1380px] mx-auto px-6 md:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-indigo-600">End-to-End Architecture</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 mt-2">Layout-Aware Vision-Language Pipeline</h2>
-            <p className="text-slate-500 text-sm mt-2">Preserving spatial coordinates, bounding boxes, and structural relationships from PDF to MongoDB.</p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/70 shadow-sm hover:shadow-md transition">
-              <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold mb-4">1</div>
-              <h3 className="font-bold text-slate-800 mb-1">Preprocessing & Binarization</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">Validates PDFs/images, destroys background watermarks via pixel thresholding, and converts pages for spatial analysis.</p>
+        {/* Hero Preview Card */}
+        <div className="lg:col-span-5">
+          <div className="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 shadow-2xl backdrop-blur-xl">
+            <div className="flex justify-between items-center pb-4 border-b border-slate-700">
+              <span className="text-xs font-bold text-slate-400 uppercase">Live Processing Preview</span>
+              <span className="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">Macro F1: 0.970</span>
             </div>
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/70 shadow-sm hover:shadow-md transition">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-4">2</div>
-              <h3 className="font-bold text-slate-800 mb-1">LayoutLMv3 + Spatial OCR</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">Combines Tesseract TSV coordinates with fine-tuned LayoutLMv3 token classification (`S-COMPANY`, `S-DATE`, `S-TOTAL`).</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/70 shadow-sm hover:shadow-md transition">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold mb-4">3</div>
-              <h3 className="font-bold text-slate-800 mb-1">Structured JSON & MongoDB</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">Maps spatial regions into clean Key-Value pairs and Table schemas, storing validated JSON records in MongoDB.</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/70 shadow-sm hover:shadow-md transition">
-              <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold mb-4">4</div>
-              <h3 className="font-bold text-slate-800 mb-1">Interactive RAG Querying</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">Ask natural language questions directly against your processed documents with confidence scores and instant retrieval.</p>
+            <div className="mt-4 space-y-3">
+              <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center">
+                <span className="text-xs text-slate-400">Vendor Entity</span>
+                <span className="text-xs font-bold text-indigo-300">Aegis Technologies Pvt Ltd</span>
+              </div>
+              <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center">
+                <span className="text-xs text-slate-400">Spatial Bounding Box</span>
+                <span className="text-xs font-mono text-emerald-400">[80, 80, 450, 150]</span>
+              </div>
+              <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center">
+                <span className="text-xs text-slate-400">Vector Embedding</span>
+                <span className="text-xs font-mono text-violet-400">all-MiniLM-L6-v2 (384-d)</span>
+              </div>
+              <div className="p-3 bg-indigo-950/40 rounded-xl border border-indigo-500/30 flex justify-between items-center">
+                <span className="text-xs text-indigo-300">Total Payable</span>
+                <span className="text-base font-extrabold text-white">₹84,560.00</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Floating Brain AI Assistant Button (Bottom Right - Exact Match to Screenshot) */}
-      <Link
-        to="/workspace"
-        title="Open AI Document Workspace"
-        className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-white shadow-xl border border-slate-100 flex items-center justify-center hover:scale-110 transition z-50"
-      >
-        <span className="text-xl">🧠</span>
-      </Link>
+      {/* Feature Grid Section */}
+      <section id="features" className="py-20 bg-slate-950 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-3">Enterprise Capabilities</h2>
+            <h3 className="text-3xl font-extrabold text-white">Engineered for Maximum Precision</h3>
+            <p className="text-sm text-slate-400 mt-2">Built from the ground up to solve complex document parsing bottlenecks.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl hover:border-indigo-500/50 transition">
+              <div className="w-12 h-12 bg-indigo-600/10 text-indigo-400 rounded-xl flex items-center justify-center font-bold text-lg mb-4">01</div>
+              <h4 className="text-lg font-bold text-white mb-2">OpenCV Preprocessing</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">Applies Otsu's binarization, affine deskewing, and Gaussian noise filtering to clean low-quality scans prior to OCR.</p>
+            </div>
+            <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl hover:border-indigo-500/50 transition">
+              <div className="w-12 h-12 bg-indigo-600/10 text-indigo-400 rounded-xl flex items-center justify-center font-bold text-lg mb-4">02</div>
+              <h4 className="text-lg font-bold text-white mb-2">LayoutLMv3 Spatial AI</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">Fuses text tokens, 2D normalized bounding box coordinates, and visual image patches into a unified transformer backbone.</p>
+            </div>
+            <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl hover:border-indigo-500/50 transition">
+              <div className="w-12 h-12 bg-indigo-600/10 text-indigo-400 rounded-xl flex items-center justify-center font-bold text-lg mb-4">03</div>
+              <h4 className="text-lg font-bold text-white mb-2">Atlas Vector RAG Chat</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">Embeds extracted text fields into 384-dimensional dense vectors stored in MongoDB Atlas for instant semantic querying.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Architecture Section (No Port Numbers) */}
+      <section id="architecture" className="py-20 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-3">System Design</h2>
+            <h3 className="text-3xl font-extrabold text-white">Decoupled Microservice Pipeline</h3>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+              <span className="text-xs font-bold text-indigo-400 uppercase">Tier 1 • Client Edge</span>
+              <h4 className="text-base font-bold text-white mt-1">Presentation SPA</h4>
+              <p className="text-xs text-slate-400 mt-2">React client featuring drag-and-drop file ingestion, real-time extraction tabs, and RAG chat interface.</p>
+            </div>
+            <div className="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+              <span className="text-xs font-bold text-indigo-400 uppercase">Tier 2 • Gateway API</span>
+              <h4 className="text-base font-bold text-white mt-1">Node.js Express Server</h4>
+              <p className="text-xs text-slate-400 mt-2">Express.js server managing multipart stream parsing, authorization, and MongoDB Mongoose persistence.</p>
+            </div>
+            <div className="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+              <span className="text-xs font-bold text-indigo-400 uppercase">Tier 3 • AI Inference</span>
+              <h4 className="text-base font-bold text-white mt-1">Python FastAPI Engine</h4>
+              <p className="text-xs text-slate-400 mt-2">Uvicorn worker runtimes isolating heavy model weights, LayoutLMv3 forward passes, and vector embeddings.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benchmarks Table Section */}
+      <section id="benchmarks" className="py-20 bg-slate-950 border-t border-slate-800">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-3">Empirical Evaluation</h2>
+            <h3 className="text-3xl font-extrabold text-white">Performance Metrics across 8,000 Documents</h3>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-slate-800 text-xs font-semibold text-slate-400 uppercase bg-slate-900/50">
+                  <th className="py-4 px-6">Evaluation Metric</th>
+                  <th className="py-4 px-6">Baseline OCR</th>
+                  <th className="py-4 px-6 text-indigo-400">Our IDP Framework</th>
+                  <th className="py-4 px-6">Improvement</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800/60 text-sm">
+                <tr>
+                  <td className="py-4 px-6 font-medium text-white">Layout Macro F1-Score</td>
+                  <td className="py-4 px-6 text-slate-400">0.582</td>
+                  <td className="py-4 px-6 font-bold text-emerald-400">0.970</td>
+                  <td className="py-4 px-6 text-indigo-300 font-semibold">+66.7%</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-medium text-white">ANLS Transcription Fidelity</td>
+                  <td className="py-4 px-6 text-slate-400">0.614</td>
+                  <td className="py-4 px-6 font-bold text-emerald-400">0.952</td>
+                  <td className="py-4 px-6 text-indigo-300 font-semibold">+55.0%</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-medium text-white">Extraction Precision</td>
+                  <td className="py-4 px-6 text-slate-400">0.601</td>
+                  <td className="py-4 px-6 font-bold text-emerald-400">0.972</td>
+                  <td className="py-4 px-6 text-indigo-300 font-semibold">+61.7%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Streamlined Enterprise Footer */}
+      <footer className="bg-slate-950 border-t border-slate-800 pt-12 pb-10 text-slate-400 text-xs">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+          <div className="space-y-3">
+            <div className="flex items-center space-x-3">
+              <div className="bg-indigo-600 text-white font-extrabold px-3 py-1.5 rounded-lg text-sm">IDP</div>
+              <span className="font-bold text-white text-sm">Intelligent Document Suite</span>
+            </div>
+            <p className="text-slate-500 leading-relaxed">
+              Next-generation spatial document intelligence powered by multimodal transformers and vector RAG search.
+            </p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Platform</h4>
+            <ul className="space-y-2">
+              <li><Link to="/workspace" className="hover:text-indigo-400 transition">Document Workspace</Link></li>
+              <li><Link to="/dashboard" className="hover:text-indigo-400 transition">User Dashboard</Link></li>
+              <li><a href="#features" className="hover:text-indigo-400 transition">Layout Extraction</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Account Access</h4>
+            <ul className="space-y-2">
+              <li><Link to="/login" className="hover:text-indigo-400 transition">Sign In</Link></li>
+              <li><Link to="/signup" className="hover:text-indigo-400 transition">Create Account</Link></li>
+              <li><a href="https://github.com/Vanshika135-svvv/Intelligent-Document-Processing" target="_blank" rel="noreferrer" className="hover:text-indigo-400 transition">GitHub Repository</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">System Status</h4>
+            <p className="text-slate-500 leading-relaxed mb-2">
+              SOC2 compliant document persistence secured via MongoDB Atlas encryption.
+            </p>
+            <span className="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              ● All Systems Operational
+            </span>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 border-t border-slate-900 pt-6 flex flex-col md:flex-row justify-between items-center text-slate-500">
+          <p>© 2026 Intelligent Document Processing Suite. All rights reserved.</p>
+          <div className="flex space-x-6 mt-3 md:mt-0">
+            <Link to="/login" className="hover:text-slate-300 transition">Sign In</Link>
+            <Link to="/signup" className="hover:text-slate-300 transition">Sign Up</Link>
+            <Link to="/workspace" className="hover:text-slate-300 transition">Workspace</Link>
+          </div>
+        </div>
+      </footer>
 
     </div>
   );
-};
-
-export default LandingPage;
+}

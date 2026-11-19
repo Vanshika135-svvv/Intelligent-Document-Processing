@@ -6,9 +6,10 @@ import LandingPage from './pages/LandingPage';
 import AuthPage from './pages/AuthPage';
 import Dashboard from './pages/Dashboard';
 import Workspace from './pages/Workspace';
+import WebsiteHelpBot from './components/WebsiteHelpBot';
 
 function App() {
-  // Global state for documents so Dashboard and Workspace stay in sync (SRS FR-101, FR-103)
+  // Global state for documents so Dashboard and Workspace stay in sync
   const [documents, setDocuments] = useState([
     {
       id: 'DOC-2026-1048',
@@ -18,7 +19,7 @@ function App() {
       uploadDate: '21 Oct 2026, 12:45 PM',
       status: 'Completed',
       confidence: 98.4,
-      vendor: 'Aegis Technologies',
+      vendor: 'Aegis Technologies Pvt Ltd',
       invoiceNo: 'INV-2026-1048',
       date: '02 Oct 2026',
       total: '₹84,560.00'
@@ -31,10 +32,10 @@ function App() {
       uploadDate: '21 Oct 2026, 01:15 PM',
       status: 'Completed',
       confidence: 96.1,
-      vendor: 'Popular Book Co.',
+      vendor: 'Adobe Stock / Receipt',
       invoiceNo: 'REC-88392',
-      date: '19 Oct 2026',
-      total: '₹1,450.00'
+      date: '26/01/2023',
+      total: '₹281.20'
     },
     {
       id: 'DOC-2026-1050',
@@ -44,10 +45,10 @@ function App() {
       uploadDate: '21 Oct 2026, 02:10 PM',
       status: 'Processing',
       confidence: null,
-      vendor: 'Detecting...',
-      invoiceNo: '---',
-      date: '---',
-      total: '---'
+      vendor: 'CloudScale Solutions',
+      invoiceNo: 'PO-2026-09',
+      date: '15 Oct 2026',
+      total: '₹1,20,000.00'
     }
   ]);
 
@@ -57,30 +58,39 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-[#f8f9ff] text-slate-900 font-sans selection:bg-indigo-600 selection:text-white">
+      <div className="relative min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
         <Routes>
-          {/* 1. Landing Page (Matches your exact screenshot!) */}
+          {/* 1. Landing Page */}
           <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<LandingPage />} />
 
-          {/* 2. Authentication Page (Login / Sign Up - SRS 3.1 & FR-101) */}
+          {/* 2. Authentication Page (Login / Sign Up) */}
           <Route path="/login" element={<AuthPage />} />
           <Route path="/signup" element={<AuthPage defaultMode="signup" />} />
 
-          {/* 3. Main Dashboard (Document Management, Status & Monitoring - SRS 4.1 & 4.7) */}
-          <Route 
-            path="/dashboard" 
-            element={<Dashboard documents={documents} />} 
+          {/* 3. Main Dashboard (Interactive Sidebar + Dynamic Right Panel) */}
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard
+                documents={documents}
+                onDocumentProcessed={addProcessedDocument}
+              />
+            }
           />
 
-          {/* 4. IDP Workspace Engine (Upload, Spatial OCR Bounding Boxes, Tables, JSON, RAG Chat - SRS 4.2-4.6) */}
-          <Route 
-            path="/workspace" 
-            element={<Workspace onDocumentProcessed={addProcessedDocument} />} 
+          {/* 4. Standalone IDP Workspace Engine */}
+          <Route
+            path="/workspace"
+            element={<Workspace onDocumentProcessed={addProcessedDocument} />}
           />
 
           {/* Catch-all redirects to Landing Page */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+
+        {/* Global Floating Help Chatbot across all views */}
+        <WebsiteHelpBot />
       </div>
     </Router>
   );

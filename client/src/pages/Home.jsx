@@ -1,641 +1,187 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Home({ onGetStarted }) {
+export default function Home() {
   return (
-    <div className="landing-page">
-
-      {/* Background decoration */}
-      <div className="bg-orb orb-one"></div>
-      <div className="bg-orb orb-two"></div>
-      <div className="bg-grid"></div>
-
-      {/* ================= NAVBAR ================= */}
-      <nav className="landing-navbar">
-
-        <div className="landing-brand">
-          <div className="brand-logo">
-            ID
-          </div>
-
-          <div className="brand-text">
-            <strong>IDP</strong>
-            <span>Document Intelligence</span>
-          </div>
-        </div>
-
-        <div className="navbar-links">
-          <a href="#features">Features</a>
-          <a href="#workflow">How it works</a>
-          <a href="#about">About</a>
-        </div>
-
-        <div className="navbar-actions">
-          <button
-            className="nav-login"
-            onClick={() => onGetStarted("login")}
-          >
-            Login
-          </button>
-
-          <button
-            className="nav-signup"
-            onClick={() => onGetStarted("signup")}
-          >
-            Sign Up
-          </button>
-        </div>
-
-      </nav>
-
-
-      {/* ================= HERO SECTION ================= */}
-      <section className="hero-section">
-
-        {/* LEFT SIDE */}
-        <div className="hero-content">
-
-          <div className="hero-badge">
-            <span className="badge-dot"></span>
-            Layout-Aware Document Intelligence
-          </div>
-
-          <h1>
-            Make your
-            <span className="gradient-text">
-              documents intelligent.
-            </span>
-          </h1>
-
-          <p className="hero-description">
-            Upload complex documents, understand their layout,
-            extract structured information, and ask questions
-            directly from your documents.
-          </p>
-
-          <div className="hero-buttons">
-
-            <button
-              className="primary-hero-btn"
-              onClick={() => onGetStarted("login")}
-            >
-              Get Started
-              <span>→</span>
-            </button>
-
-            <button
-              className="secondary-hero-btn"
-              onClick={() => onGetStarted("login")}
-            >
-              Explore Dashboard
-            </button>
-
-          </div>
-
-          {/* Hero statistics */}
-          <div className="hero-stats">
-
-            <div className="hero-stat">
-              <strong>96.8%</strong>
-              <span>Demo Accuracy</span>
-            </div>
-
-            <div className="stat-divider"></div>
-
-            <div className="hero-stat">
-              <strong>5-Step</strong>
-              <span>Processing Pipeline</span>
-            </div>
-
-            <div className="stat-divider"></div>
-
-            <div className="hero-stat">
-              <strong>JSON</strong>
-              <span>Structured Output</span>
-            </div>
-
-          </div>
-
-        </div>
-
-
-        {/* RIGHT SIDE */}
-        <div className="hero-visual">
-
-          <div className="visual-glow"></div>
-
-          <div className="document-window">
-
-            {/* Window top bar */}
-            <div className="window-header">
-
-              <div className="window-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <span className="window-title">
-                IDP Processing Preview
-              </span>
-
-              <div className="window-status">
-                ● Live
-              </div>
-
-            </div>
-
-
-            {/* Document */}
-            <div className="document-paper">
-
-              <div className="invoice-header">
-
-                <div>
-                  <div className="invoice-label">
-                    TAX INVOICE
-                  </div>
-
-                  <div className="invoice-company">
-                    AEGIS TECHNOLOGIES
-                  </div>
-                </div>
-
-                <div className="invoice-icon">
-                  IN
-                </div>
-
-              </div>
-
-
-              <div className="invoice-line"></div>
-
-
-              {/* Key values */}
-              <div className="invoice-details">
-
-                <div className="invoice-detail">
-                  <span>Invoice Number</span>
-                  <strong>INV-2026-1048</strong>
-                </div>
-
-                <div className="invoice-detail">
-                  <span>Invoice Date</span>
-                  <strong>02 Oct 2026</strong>
-                </div>
-
-                <div className="invoice-detail">
-                  <span>Vendor</span>
-                  <strong>Aegis Technologies</strong>
-                </div>
-
-              </div>
-
-
-              {/* Table */}
-              <div className="invoice-table">
-
-                <div className="invoice-table-head">
-                  <span>Product</span>
-                  <span>Qty</span>
-                  <span>Price</span>
-                  <span>Total</span>
-                </div>
-
-                <div className="invoice-table-row">
-                  <span>Document Processing</span>
-                  <span>1</span>
-                  <span>₹45,000</span>
-                  <span>₹45,000</span>
-                </div>
-
-                <div className="invoice-table-row">
-                  <span>AI Extraction Module</span>
-                  <span>1</span>
-                  <span>₹25,000</span>
-                  <span>₹25,000</span>
-                </div>
-
-                <div className="invoice-table-row">
-                  <span>Integration Support</span>
-                  <span>1</span>
-                  <span>₹14,560</span>
-                  <span>₹14,560</span>
-                </div>
-
-              </div>
-
-
-              {/* Total */}
-              <div className="invoice-total">
-
-                <span>Total Amount</span>
-
-                <strong>
-                  ₹84,560
-                </strong>
-
-              </div>
-
-            </div>
-
-
-            {/* Floating cards */}
-
-            <div className="floating-card layout-card">
-
-              <div className="floating-icon purple-icon">
-                ✦
-              </div>
-
-              <div>
-                <strong>Layout Detected</strong>
-                <span>Tables & key-values</span>
-              </div>
-
-              <div className="floating-check">
-                ✓
-              </div>
-
-            </div>
-
-
-            <div className="floating-card ocr-card">
-
-              <div className="floating-icon blue-icon">
-                ◎
-              </div>
-
-              <div>
-                <strong>Spatial OCR</strong>
-                <span>96.8% confidence</span>
-              </div>
-
-              <div className="confidence-circle">
-                96
-              </div>
-
-            </div>
-
-
-            <div className="json-floating">
-
-              <span className="json-symbol">
-                {"{}"}
-              </span>
-
-              <div>
-                <strong>Structured JSON</strong>
-                <span>Ready for querying</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* ================= FEATURES ================= */}
-      <section
-        className="features-section"
-        id="features"
-      >
-
-        <div className="section-heading">
-
-          <span className="section-label">
-            WHAT IDP CAN DO
-          </span>
-
-          <h2>
-            Understand documents beyond
-            <span> simple text extraction.</span>
-          </h2>
-
-          <p>
-            IDP combines document layout analysis, spatial OCR,
-            structured data extraction and document querying.
-          </p>
-
-        </div>
-
-
-        <div className="feature-grid">
-
-          <div className="feature-card">
-
-            <div className="feature-number">
-              01
-            </div>
-
-            <div className="feature-icon purple-feature">
-              ▦
-            </div>
-
-            <h3>
-              Understand Layout
-            </h3>
-
-            <p>
-              Detect tables, headings, paragraphs,
-              key-value regions and other structural
-              elements in your document.
-            </p>
-
-            <div className="feature-link">
-              Layout Analysis →
-            </div>
-
-          </div>
-
-
-          <div className="feature-card">
-
-            <div className="feature-number">
-              02
-            </div>
-
-            <div className="feature-icon blue-feature">
-              ◎
-            </div>
-
-            <h3>
-              Extract Information
-            </h3>
-
-            <p>
-              Extract text together with its positional
-              information using spatial OCR while
-              preserving document relationships.
-            </p>
-
-            <div className="feature-link">
-              Spatial OCR →
-            </div>
-
-          </div>
-
-
-          <div className="feature-card">
-
-            <div className="feature-number">
-              03
-            </div>
-
-            <div className="feature-icon green-feature">
-              {"{}"}
-            </div>
-
-            <h3>
-              Structure Data
-            </h3>
-
-            <p>
-              Convert extracted information into
-              structured JSON that can be stored,
-              queried and consumed by applications.
-            </p>
-
-            <div className="feature-link">
-              Structured JSON →
-            </div>
-
-          </div>
-
-
-          <div className="feature-card">
-
-            <div className="feature-number">
-              04
-            </div>
-
-            <div className="feature-icon orange-feature">
-              ?
-            </div>
-
-            <h3>
-              Ask Questions
-            </h3>
-
-            <p>
-              Interact with processed documents and
-              retrieve relevant information through
-              document-based question answering.
-            </p>
-
-            <div className="feature-link">
-              Document Q&A →
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* ================= WORKFLOW ================= */}
-      <section
-        className="workflow-section"
-        id="workflow"
-      >
-
-        <div className="section-heading">
-
-          <span className="section-label">
-            HOW IT WORKS
-          </span>
-
-          <h2>
-            From PDF to
-            <span> structured knowledge.</span>
-          </h2>
-
-          <p>
-            A complete document processing pipeline designed
-            to preserve both text and layout information.
-          </p>
-
-        </div>
-
-
-        <div className="workflow-container">
-
-          <div className="workflow-step">
-
-            <div className="workflow-icon">
-              01
-            </div>
-
-            <h3>
-              Upload
-            </h3>
-
-            <p>
-              Upload your PDF document securely.
-            </p>
-
-          </div>
-
-
-          <div className="workflow-arrow">
-            →
-          </div>
-
-
-          <div className="workflow-step">
-
-            <div className="workflow-icon">
-              02
-            </div>
-
-            <h3>
-              Analyze
-            </h3>
-
-            <p>
-              Identify document layout and regions.
-            </p>
-
-          </div>
-
-
-          <div className="workflow-arrow">
-            →
-          </div>
-
-
-          <div className="workflow-step">
-
-            <div className="workflow-icon">
-              03
-            </div>
-
-            <h3>
-              Extract
-            </h3>
-
-            <p>
-              Extract text and spatial information.
-            </p>
-
-          </div>
-
-
-          <div className="workflow-arrow">
-            →
-          </div>
-
-
-          <div className="workflow-step">
-
-            <div className="workflow-icon">
-              04
-            </div>
-
-            <h3>
-              Structure
-            </h3>
-
-            <p>
-              Generate structured document data.
-            </p>
-
-          </div>
-
-
-          <div className="workflow-arrow">
-            →
-          </div>
-
-
-          <div className="workflow-step">
-
-            <div className="workflow-icon">
-              05
-            </div>
-
-            <h3>
-              Query
-            </h3>
-
-            <p>
-              Ask questions about your document.
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* ================= CTA ================= */}
-      <section
-        className="cta-section"
-        id="about"
-      >
-
-        <div className="cta-content">
-
-          <div className="cta-icon">
-            ✦
-          </div>
-
-          <h2>
-            Ready to make your documents smarter?
-          </h2>
-
-          <p>
-            Start processing your first document with
-            the Intelligent Document Processing platform.
-          </p>
-
-          <button
-            className="primary-hero-btn"
-            onClick={() => onGetStarted("login")}
-          >
-            Open IDP Workspace
-            <span>→</span>
-          </button>
-
-        </div>
-
-      </section>
-
-
-      {/* ================= FOOTER ================= */}
-      <footer className="landing-footer">
-
-        <div className="footer-brand">
-
-          <div className="brand-logo">
-            ID
-          </div>
-
+    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
+      
+      {/* Navigation Header */}
+      <header className="border-b border-slate-800 px-8 py-5 flex justify-between items-center sticky top-0 bg-slate-900/90 backdrop-blur-md z-50">
+        <div className="flex items-center space-x-3">
+          <div className="bg-indigo-600 text-white font-extrabold px-3.5 py-2 rounded-xl text-lg tracking-wider shadow-lg shadow-indigo-500/20">IDP</div>
           <div>
-            <strong>IDP</strong>
-            <span>
-              Intelligent Document Processing
-            </span>
+            <h1 className="text-base font-bold text-white tracking-wide">Intelligent Document Processing</h1>
+            <p className="text-[10px] text-indigo-400 font-semibold tracking-widest uppercase">Vision-Language Enterprise Suite</p>
           </div>
+        </div>
+        <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+          <a href="#features" className="hover:text-indigo-400 transition">Features</a>
+          <a href="#architecture" className="hover:text-indigo-400 transition">Architecture</a>
+          <a href="#benchmarks" className="hover:text-indigo-400 transition">Benchmarks</a>
+          <a href="#team" className="hover:text-indigo-400 transition">Team</a>
+        </div>
+        <div className="flex items-center space-x-4">
+          <Link to="/workspace" className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition shadow-lg shadow-indigo-600/30">
+            Launch Workspace →
+          </Link>
+        </div>
+      </header>
 
+      {/* Hero Section */}
+      <section className="max-w-7xl mx-auto px-6 pt-20 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-7 space-y-6">
+          <div className="inline-flex items-center space-x-2 bg-indigo-500/10 border border-indigo-500/20 px-3.5 py-1.5 rounded-full text-xs font-semibold text-indigo-300">
+            <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+            <span>Layout-Aware Vision-Language Transformer Engine</span>
+          </div>
+          <h2 className="text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Transform Unstructured Docs Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">Structured Intelligence.</span>
+          </h2>
+          <p className="text-base text-slate-400 leading-relaxed max-w-xl">
+            Bypass rigid templates. Our decoupled microservice architecture combines OpenCV pre-processing, LayoutLMv3 spatial tokenization, and MongoDB Atlas vector RAG to parse complex invoices, receipts, and forms with zero template reliance.
+          </p>
+          <div className="flex flex-wrap gap-4 pt-2">
+            <Link to="/workspace" className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-7 py-3.5 rounded-xl transition shadow-xl shadow-indigo-600/20 text-sm">
+              Open IDP Workspace
+            </Link>
+            <a href="#architecture" className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-7 py-3.5 rounded-xl transition border border-slate-700 text-sm">
+              Explore Architecture
+            </a>
+          </div>
         </div>
 
-        <p>
-          Layout-Aware Vision-Language Pipeline
-        </p>
+        {/* Hero Preview Card */}
+        <div className="lg:col-span-5">
+          <div className="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 shadow-2xl backdrop-blur-xl">
+            <div className="flex justify-between items-center pb-4 border-b border-slate-700">
+              <span className="text-xs font-bold text-slate-400 uppercase">Live Processing Preview</span>
+              <span className="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">Macro F1: 0.970</span>
+            </div>
+            <div className="mt-4 space-y-3">
+              <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center">
+                <span className="text-xs text-slate-400">Vendor Entity</span>
+                <span className="text-xs font-bold text-indigo-300">Aegis Technologies Pvt Ltd</span>
+              </div>
+              <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center">
+                <span className="text-xs text-slate-400">Spatial Bounding Box</span>
+                <span className="text-xs font-mono text-emerald-400">[80, 80, 450, 150]</span>
+              </div>
+              <div className="p-3 bg-indigo-950/40 rounded-xl border border-indigo-500/30 flex justify-between items-center">
+                <span className="text-xs text-indigo-300">Total Payable</span>
+                <span className="text-base font-extrabold text-white">₹84,560.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <p className="footer-copy">
-          © 2026 Aegis AI. Major Project.
-        </p>
+      {/* Feature Grid Section */}
+      <section id="features" className="py-20 bg-slate-950 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-3">Enterprise Capabilities</h2>
+            <h3 className="text-3xl font-extrabold text-white">Engineered for Maximum Precision</h3>
+            <p className="text-sm text-slate-400 mt-2">Built from the ground up to solve complex document parsing bottlenecks.</p>
+          </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl hover:border-indigo-500/50 transition">
+              <div className="w-12 h-12 bg-indigo-600/10 text-indigo-400 rounded-xl flex items-center justify-center font-bold text-lg mb-4">01</div>
+              <h4 className="text-lg font-bold text-white mb-2">OpenCV Preprocessing</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">Applies Otsu's binarization, affine deskewing, and Gaussian noise filtering to clean low-quality scans prior to OCR.</p>
+            </div>
+            <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl hover:border-indigo-500/50 transition">
+              <div className="w-12 h-12 bg-indigo-600/10 text-indigo-400 rounded-xl flex items-center justify-center font-bold text-lg mb-4">02</div>
+              <h4 className="text-lg font-bold text-white mb-2">LayoutLMv3 Spatial AI</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">Fuses text tokens, 2D normalized bounding box coordinates, and visual image patches into a unified transformer backbone.</p>
+            </div>
+            <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl hover:border-indigo-500/50 transition">
+              <div className="w-12 h-12 bg-indigo-600/10 text-indigo-400 rounded-xl flex items-center justify-center font-bold text-lg mb-4">03</div>
+              <h4 className="text-lg font-bold text-white mb-2">Atlas Vector RAG Chat</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">Embeds extracted text fields into 384-dimensional dense vectors stored in MongoDB Atlas for instant semantic querying.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Architecture Section */}
+      <section id="architecture" className="py-20 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-3">System Design</h2>
+            <h3 className="text-3xl font-extrabold text-white">Decoupled Microservice Pipeline</h3>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+              <span className="text-xs font-bold text-indigo-400 uppercase">Tier 1</span>
+              <h4 className="text-base font-bold text-white mt-1">Presentation Client</h4>
+              <p className="text-xs text-slate-400 mt-2">React SPA featuring drag-and-drop file ingestion, real-time extraction tabs, and RAG chat interface.</p>
+            </div>
+            <div className="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+              <span className="text-xs font-bold text-indigo-400 uppercase">Tier 2</span>
+              <h4 className="text-base font-bold text-white mt-1">Gateway API (Node.js)</h4>
+              <p className="text-xs text-slate-400 mt-2">Express.js gateway managing multer multipart uploads, authorization, and MongoDB Mongoose persistence.</p>
+            </div>
+            <div className="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+              <span className="text-xs font-bold text-indigo-400 uppercase">Tier 3</span>
+              <h4 className="text-base font-bold text-white mt-1">AI Inference (FastAPI)</h4>
+              <p className="text-xs text-slate-400 mt-2">Python Uvicorn workers isolating high VRAM model weights, LayoutLMv3 forward passes, and vector embeddings.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benchmarks Table Section */}
+      <section id="benchmarks" className="py-20 bg-slate-950 border-t border-slate-800">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-3">Empirical Evaluation</h2>
+            <h3 className="text-3xl font-extrabold text-white">Performance Metrics across 8,000 Documents</h3>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-slate-800 text-xs font-semibold text-slate-400 uppercase bg-slate-900/50">
+                  <th className="py-4 px-6">Evaluation Metric</th>
+                  <th className="py-4 px-6">Baseline OCR</th>
+                  <th className="py-4 px-6 text-indigo-400">Our IDP Framework</th>
+                  <th className="py-4 px-6">Improvement</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800/60 text-sm">
+                <tr>
+                  <td className="py-4 px-6 font-medium text-white">Layout Macro F1-Score</td>
+                  <td className="py-4 px-6 text-slate-400">0.582</td>
+                  <td className="py-4 px-6 font-bold text-emerald-400">0.970</td>
+                  <td className="py-4 px-6 text-indigo-300 font-semibold">+66.7%</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-medium text-white">ANLS Transcription Fidelity</td>
+                  <td className="py-4 px-6 text-slate-400">0.614</td>
+                  <td className="py-4 px-6 font-bold text-emerald-400">0.952</td>
+                  <td className="py-4 px-6 text-indigo-300 font-semibold">+55.0%</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-medium text-white">Extraction Precision</td>
+                  <td className="py-4 px-6 text-slate-400">0.601</td>
+                  <td className="py-4 px-6 font-bold text-emerald-400">0.972</td>
+                  <td className="py-4 px-6 text-indigo-300 font-semibold">+61.7%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Credits Footer */}
+      <footer id="team" className="py-12 border-t border-slate-800 text-center text-xs text-slate-500">
+        <p className="font-semibold text-slate-400">Shri Vaishnav Vidyapeeth Vishwavidyalaya, Indore</p>
+        <p className="mt-1">Major Project Group 10 | Guided by Prof. Harshit Bharti</p>
+        <p className="mt-4 text-slate-600">© 2026 Intelligent Document Processing Suite. All rights reserved.</p>
       </footer>
 
     </div>
   );
 }
-
-export default Home;
