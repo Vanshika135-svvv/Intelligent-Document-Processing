@@ -2,41 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-#root,
-button,
-input,
-textarea,
-select,
-p,
-span,
-div {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+@layer base {
+  html,
+  body,
+  #root,
+  button,
+  input,
+  textarea,
+  select,
+  p,
+  span,
+  div {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  code,
+  pre,
+  .font-mono {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  body {
+    margin: 0;
+    background-color: #020617;
+    color: #e2e8f0;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-h1,
-h2,
-h3,
-h4,
-.font-display {
-  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-  letter-spacing: -0.015em;
-}
+@layer utilities {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
+    caret-color: #4f46e5 !important;
+  }
 
-code,
-pre,
-.font-mono {
-  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
-  font-variant-numeric: tabular-nums;
-}
-
-body {
-  margin: 0;
-  background-color: #020617;
-  color: #e2e8f0;
-  font-size: 14px;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  input::placeholder {
+    color: #64748b !important;
+    -webkit-text-fill-color: #64748b !important;
+    opacity: 1 !important;
+  }
 }

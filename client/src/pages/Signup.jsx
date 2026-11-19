@@ -34,7 +34,6 @@ export default function Signup({ onAuthSuccess }) {
       }
       navigate('/dashboard');
     } catch (err) {
-      // Fallback for offline/local demo flow if backend isn't running
       if (!err.response) {
         if (onAuthSuccess) {
           onAuthSuccess({ fullName: fullName.trim(), email: email.trim() });
@@ -49,78 +48,108 @@ export default function Signup({ onAuthSuccess }) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-center px-4 py-10">
-      <div className="w-full max-w-md bg-slate-900/95 border border-slate-800 rounded-2xl p-7 sm:p-8 shadow-2xl space-y-6">
-        {/* Header */}
+    <div
+      style={{ backgroundColor: '#020617', color: '#f1f5f9' }}
+      className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-center px-4 py-10"
+    >
+      <div
+        style={{ backgroundColor: '#0f172a', borderColor: '#1e293b' }}
+        className="w-full max-w-md bg-slate-900/95 border border-slate-800 rounded-2xl p-7 sm:p-8 shadow-2xl space-y-6"
+      >
         <div className="text-center space-y-1.5">
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          <h1
+            style={{ color: '#ffffff', WebkitTextFillColor: '#ffffff' }}
+            className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight"
+          >
             Create an account
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400">
+          <p
+            style={{ color: '#94a3b8' }}
+            className="text-xs sm:text-sm text-slate-400"
+          >
             Team Aegis AI — Document Intelligence
           </p>
         </div>
 
-        {/* Error Alert */}
         {error && (
           <div className="px-3.5 py-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-medium">
             {error}
           </div>
         )}
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4 text-xs sm:text-sm">
           <div className="space-y-1.5">
             <label
-              htmlFor="fullName"
+              htmlFor="signup-name"
+              style={{ color: '#cbd5e1' }}
               className="block text-xs font-semibold text-slate-300"
             >
               Full Name
             </label>
             <input
-              id="fullName"
+              id="signup-name"
               type="text"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="Enter your full name"
               autoComplete="name"
-              className="w-full bg-slate-950 text-white placeholder:text-slate-500 border border-slate-700/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-2.5 text-sm outline-none transition"
+              style={{
+                backgroundColor: '#090d16',
+                color: '#ffffff',
+                WebkitTextFillColor: '#ffffff',
+                caretColor: '#818cf8'
+              }}
+              className="w-full bg-slate-950 text-white placeholder:text-slate-500 border border-slate-700/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-2.5 text-sm font-medium outline-none transition"
             />
           </div>
 
           <div className="space-y-1.5">
             <label
-              htmlFor="email"
+              htmlFor="signup-email"
+              style={{ color: '#cbd5e1' }}
               className="block text-xs font-semibold text-slate-300"
             >
               Email Address
             </label>
             <input
-              id="email"
+              id="signup-email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               autoComplete="email"
-              className="w-full bg-slate-950 text-white placeholder:text-slate-500 border border-slate-700/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-2.5 text-sm outline-none transition"
+              style={{
+                backgroundColor: '#090d16',
+                color: '#ffffff',
+                WebkitTextFillColor: '#ffffff',
+                caretColor: '#818cf8'
+              }}
+              className="w-full bg-slate-950 text-white placeholder:text-slate-500 border border-slate-700/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-2.5 text-sm font-medium outline-none transition"
             />
           </div>
 
           <div className="space-y-1.5">
             <label
-              htmlFor="password"
+              htmlFor="signup-password"
+              style={{ color: '#cbd5e1' }}
               className="block text-xs font-semibold text-slate-300"
             >
               Password
             </label>
             <input
-              id="password"
+              id="signup-password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Create a password"
               autoComplete="new-password"
-              className="w-full bg-slate-950 text-white placeholder:text-slate-500 border border-slate-700/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-2.5 text-sm outline-none transition"
+              style={{
+                backgroundColor: '#090d16',
+                color: '#ffffff',
+                WebkitTextFillColor: '#ffffff',
+                caretColor: '#818cf8'
+              }}
+              className="w-full bg-slate-950 text-white placeholder:text-slate-500 border border-slate-700/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-2.5 text-sm font-medium outline-none transition"
             />
           </div>
 
@@ -133,7 +162,6 @@ export default function Signup({ onAuthSuccess }) {
           </button>
         </form>
 
-        {/* Footer Links */}
         <div className="pt-2 space-y-2.5 text-center text-xs text-slate-400">
           <p>
             Already have an account?{' '}
@@ -145,10 +173,7 @@ export default function Signup({ onAuthSuccess }) {
             </Link>
           </p>
           <div>
-            <Link
-              to="/"
-              className="text-slate-400 hover:text-slate-200 font-medium transition"
-            >
+            <Link to="/" className="text-slate-400 hover:text-slate-200 font-medium transition">
               Back to Home
             </Link>
           </div>
