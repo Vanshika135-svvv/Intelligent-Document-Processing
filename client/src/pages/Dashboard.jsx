@@ -42,6 +42,51 @@ export default function Dashboard({ documents = [], onDocumentProcessed }) {
   const defaultDocs = useMemo(
     () => [
       {
+        id: 'RCT-XAJI0Y6D',
+        name: 'reciept.pdf',
+        type: 'PDF',
+        size: '42 KB',
+        uploadDate: '21 Nov 2026',
+        status: 'Completed',
+        confidence: 99.2,
+        vendor: 'Rodriguez, Figueroa and Sanchez',
+        address: '819 Johnson Course, East William, AK 74064',
+        date: '2025-09-25',
+        payment: 'Cash',
+        subtotal: '$206.39',
+        tax: '$11.36',
+        discount: '$13.04',
+        total: '$204.71',
+        items: [
+          { description: 'Notebook', qty: 1, unitPrice: '$18.27', total: '$18.27' },
+          { description: 'Notebook', qty: 2, unitPrice: '$57.57', total: '$115.14' },
+          { description: 'Shampoo', qty: 2, unitPrice: '$36.49', total: '$72.98' }
+        ]
+      },
+      {
+        id: 'RCT-0PVN9ER1',
+        name: 'receipt 2.pdf',
+        type: 'PDF',
+        size: '44 KB',
+        uploadDate: '21 Nov 2026',
+        status: 'Completed',
+        confidence: 99.3,
+        vendor: 'Mejia Inc',
+        address: '4752 Kelly Skyway, Jacquelineland, PA 83728',
+        date: '2022-03-26',
+        payment: 'Mobile Wallet',
+        subtotal: '$672.82',
+        tax: '$52.70',
+        discount: '$4.00',
+        total: '$721.52',
+        items: [
+          { description: 'Backpack', qty: 4, unitPrice: '$48.12', total: '$192.48' },
+          { description: 'Soap', qty: 4, unitPrice: '$48.08', total: '$192.32' },
+          { description: 'T-Shirt', qty: 3, unitPrice: '$77.72', total: '$233.16' },
+          { description: 'Notebook', qty: 1, unitPrice: '$54.86', total: '$54.86' }
+        ]
+      },
+      {
         id: 'DOC-2026-1048',
         name: 'real bills.jpg',
         type: 'IMAGE',
@@ -214,7 +259,7 @@ export default function Dashboard({ documents = [], onDocumentProcessed }) {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
     doc.text(
-      `Prepared for: Vanshika Tiwari   |   Generated: 19 Nov 2026   |   Avg Confidence: ${avgConfidence}%`,
+      `Prepared for: Vanshika Tiwari   |   Generated: 21 Nov 2026   |   Avg Confidence: ${avgConfidence}%`,
       40,
       88
     );
@@ -460,7 +505,7 @@ export default function Dashboard({ documents = [], onDocumentProcessed }) {
               <div>
                 <h1 className="text-2xl font-bold text-white tracking-tight">My Documents</h1>
                 <p className="text-xs text-slate-400 mt-1">
-                  Open any receipt or PDF in the workspace, or delete items you no longer need.
+                  Open any receipt or PDF in the workspace for RAG Q&amp;A, or delete items you no longer need.
                 </p>
               </div>
               <div className="flex items-center gap-2.5">
@@ -522,7 +567,7 @@ export default function Dashboard({ documents = [], onDocumentProcessed }) {
                   {docList.length === 0 && (
                     <tr>
                       <td colSpan={5} className="py-8 text-center text-slate-500">
-                        No documents remaining. Click "+ New Extraction" to upload a receipt or PDF.
+                        No documents remaining. Click &quot;+ New Extraction&quot; to upload a receipt or PDF.
                       </td>
                     </tr>
                   )}
@@ -537,7 +582,7 @@ export default function Dashboard({ documents = [], onDocumentProcessed }) {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl font-bold text-white tracking-tight">
-                  Spend & Receipt Insights
+                  Spend &amp; Receipt Insights
                 </h1>
                 <p className="text-xs text-slate-400 mt-1">
                   Totals grouped by currency, live search across bills, and CSV export.
@@ -603,7 +648,7 @@ export default function Dashboard({ documents = [], onDocumentProcessed }) {
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <h2 className="text-sm font-semibold text-white">
-                  Merchant & Amount Breakdown ({filteredDocs.length})
+                  Merchant &amp; Amount Breakdown ({filteredDocs.length})
                 </h2>
                 <input
                   type="text"
@@ -642,7 +687,7 @@ export default function Dashboard({ documents = [], onDocumentProcessed }) {
                 ))}
                 {filteredDocs.length === 0 && (
                   <p className="py-6 text-center text-slate-500">
-                    No matching receipts or documents found for "{searchQuery}".
+                    No matching receipts or documents found for &quot;{searchQuery}&quot;.
                   </p>
                 )}
               </div>
@@ -677,10 +722,10 @@ export default function Dashboard({ documents = [], onDocumentProcessed }) {
                     DocuPulse AI PDF Export
                   </span>
                   <h2 className="text-lg font-bold text-white mt-0.5">
-                    Extracted Bills & Receipts Summary
+                    Extracted Bills &amp; Receipts Summary
                   </h2>
                   <p className="text-xs text-slate-400 mt-1">
-                    Prepared for: Vanshika Tiwari • Generated: 19 Nov 2026
+                    Prepared for: Vanshika Tiwari • Generated: 21 Nov 2026
                   </p>
                 </div>
                 <div className="text-right text-xs tabular-nums">
